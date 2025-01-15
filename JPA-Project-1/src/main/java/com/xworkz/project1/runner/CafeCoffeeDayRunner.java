@@ -23,29 +23,34 @@ public class CafeCoffeeDayRunner {
 
         EntityManagerFactory emf=Persistence.createEntityManagerFactory("myPersistenceUnit");
         EntityManager entityManager=emf.createEntityManager();
-        try {
-            entityManager.getTransaction().begin();
+//        try {
+//            entityManager.getTransaction().begin();
+//
+//            entityManager.persist(ccd);
+//            entityManager.persist(ccd1);
+//            entityManager.persist(ccd2);
+//            entityManager.persist(ccd3);
+//            entityManager.persist(ccd4);
+//            entityManager.persist(ccd5);
+//            entityManager.persist(ccd6);
+//            entityManager.persist(ccd7);
+//            entityManager.persist(ccd8);
+//            entityManager.persist(ccd9);
+//
+//
+//            entityManager.getTransaction().commit();
+//        } catch (Exception e) {
+//            entityManager.getTransaction().rollback();
+//            System.out.println(e.getMessage());
+//        } finally {
+//            entityManager.close();
+//            emf.close();
+//        }
 
-            entityManager.persist(ccd);
-            entityManager.persist(ccd1);
-            entityManager.persist(ccd2);
-            entityManager.persist(ccd3);
-            entityManager.persist(ccd4);
-            entityManager.persist(ccd5);
-            entityManager.persist(ccd6);
-            entityManager.persist(ccd7);
-            entityManager.persist(ccd8);
-            entityManager.persist(ccd9);
-
-
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            entityManager.getTransaction().rollback();
-            System.out.println(e.getMessage());
-        } finally {
-            entityManager.close();
-            emf.close();
-        }
-
+        //Read
+        CafeCoffeeDayEntity entity=entityManager.find(CafeCoffeeDayEntity.class,12);
+        System.out.println(entity);
+        entity.setCity("Mangalore");
+        entityManager.merge(entity);
     }
 }
