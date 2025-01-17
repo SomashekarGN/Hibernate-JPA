@@ -16,11 +16,11 @@ public class RestaurantRunner {
 
 
         RestaurantService restaurantService=new RestaurantServiceImpl();
-        restaurantService.save(restaurantEntity1);
-        restaurantService.save(restaurantEntity2);
-        restaurantService.save(restaurantEntity3);
-        restaurantService.save(restaurantEntity4);
-        restaurantService.save(restaurantEntity5);
+//        restaurantService.save(restaurantEntity1);
+//        restaurantService.save(restaurantEntity2);
+//        restaurantService.save(restaurantEntity3);
+//        restaurantService.save(restaurantEntity4);
+//        restaurantService.save(restaurantEntity5);
 
 //Get BY ID
        //restaurantService.getById(2);
@@ -32,7 +32,11 @@ public class RestaurantRunner {
 //Update By Name
         //restaurantService.updateByName("Empire Restaurant","Rajajinagar");
 
+//Get Location By id
+        //restaurantService.getLocationById(1);
 
+//Get Name And Location By Id
+    restaurantService.getNameAndLocationById(1);
 
     }
 }

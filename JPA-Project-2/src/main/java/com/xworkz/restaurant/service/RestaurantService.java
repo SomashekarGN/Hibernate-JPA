@@ -11,4 +11,8 @@ public interface RestaurantService {
     void getByName(String name);
 
     void updateByName(String name,String location);
+
+    void getLocationById(Integer id);
+
+    void getNameAndLocationById(Integer id);
 }

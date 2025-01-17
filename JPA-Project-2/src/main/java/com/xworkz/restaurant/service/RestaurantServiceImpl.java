@@ -61,4 +61,31 @@ public class RestaurantServiceImpl implements RestaurantService{
             System.out.println("Name not found please provide a valid name");
         }
     }
+
+    @Override
+    public void getLocationById(Integer id) {
+        String loc=restaurantRepo.getLocationById(id);
+        if(loc!=null)
+        {
+            System.out.println("Location for the Given id "+id+" is :"+loc);
+        }
+        else {
+            System.out.println("No Location Found For the Provided Id :"+id);
+        }
+    }
+
+    @Override
+    public void getNameAndLocationById(Integer id) {
+        RestaurantEntity entity=restaurantRepo.getNameAndLocationById(id);
+        String hotelName=entity.getHotelName();
+        String location=entity.getLocation();
+        if(entity!=null)
+        {
+            System.out.println("Name and Location For the provided id :"+id+" = "+hotelName+" , "+location);
+        }
+        else
+        {
+            System.out.println("No Details Found The Id Provided");
+        }
+    }
 }

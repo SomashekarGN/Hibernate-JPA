@@ -11,4 +11,8 @@ public interface RestaurantRepo {
     RestaurantEntity getByName(String name);
 
     RestaurantEntity updateByName(String name,String location);
+
+    String getLocationById(Integer id);
+
+    RestaurantEntity getNameAndLocationById(Integer id);
 }

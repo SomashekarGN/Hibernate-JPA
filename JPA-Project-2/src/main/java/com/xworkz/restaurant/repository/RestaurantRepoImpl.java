@@ -10,7 +10,7 @@ import javax.persistence.Query;
 public class RestaurantRepoImpl implements RestaurantRepo{
 
     private EntityManagerFactory emf=Persistence.createEntityManagerFactory("myPersistenceUnit");
-    EntityManager entityManager=emf.createEntityManager();
+    private EntityManager entityManager=emf.createEntityManager();
 
 
     @Override
@@ -61,6 +61,7 @@ public class RestaurantRepoImpl implements RestaurantRepo{
             Query updateQuery=entityManager.createNamedQuery("getByName");
             updateQuery.setParameter("name",name);
             RestaurantEntity updatedentity=(RestaurantEntity) updateQuery.getSingleResult();
+
             return updatedentity;
 
         } catch (Exception e) {
@@ -72,6 +73,41 @@ public class RestaurantRepoImpl implements RestaurantRepo{
         }
 
 
+        return null;
+    }
+
+    @Override
+    public String getLocationById(Integer id) {
+
+        try {
+            Query query=entityManager.createNamedQuery("getLocationById");
+            query.setParameter("id",id);
+            String location=(String) query.getSingleResult();
+            return location;
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            System.out.println(e.getMessage());
+        } finally {
+            entityManager.close();
+            emf.close();
+        }
+        return null;
+    }
+
+    @Override
+    public RestaurantEntity getNameAndLocationById(Integer id) {
+
+        try {
+            Query query=entityManager.createNamedQuery("getNameAndLocationById");
+            query.setParameter("id",id);
+            RestaurantEntity entity=(RestaurantEntity) query.getSingleResult();
+            return entity;
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            System.out.println(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
         return null;
     }
 }
